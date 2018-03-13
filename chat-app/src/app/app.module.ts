@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { userServiceInjectables } from './user/users.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    userServiceInjectables
   ],
   imports: [
     BrowserModule
