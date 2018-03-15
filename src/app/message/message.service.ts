@@ -1,8 +1,8 @@
-import { Subject } from "rxjs/Subject";
 import { Message } from "./message.model";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { Thread } from "../thread/thread.model";
 import { User } from "../user/user.model";
+import { Injectable } from "@angular/core";
 
 const initialMessages: Message[] = [];
 
@@ -10,6 +10,7 @@ interface IMessagesOperation extends Function {
     (messages: Message[]): Message[]
 }
 
+@Injectable()
 export class MessagesService {
     newMessages: Subject<Message> = new Subject<Message>();
     messages: Observable<Message[]>;
@@ -21,9 +22,7 @@ export class MessagesService {
 
     constructor() {
         this.messages = this.updates
-            .scan((messages: Message[], operation: IMessagesOperation) => {
-                return operation(messages);
-            }, initialMessages)
+            .scan((messages: Message[], operation: IMessagesOperation) => { return operation(messages);}, initialMessages)
             .publishReplay(1)
             .refCount()
 
@@ -49,12 +48,11 @@ export class MessagesService {
                     });
                 };
             })
+            .subscribe(this.updates);
     }
 
     addMessage(newMessage: Message): void {
-        this.updates.next((messages: Message[]) => {
-            return messages.concat(newMessage);
-        })
+        this.newMessages.next(newMessage)
     }
 
     messagesForThreadUser(thread: Thread, user: User): Observable<Message> {
@@ -65,3 +63,6 @@ export class MessagesService {
             })
     }
 }
+export const messagesServiceInjectables: Array<any> = [
+    MessagesService
+];
