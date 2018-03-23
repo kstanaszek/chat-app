@@ -17,6 +17,19 @@ describe('MessagesService', () => {
 
     const m2: Message = new Message({
       author: user,
+      text: 'How are you?',
+      thread: thread
+    });
+
+    const m3: Message = new Message({
+      author: user,
+      text: 'I hope you are good.',
+      thread: thread
+    });
+
+
+    const m4: Message = new Message({
+      author: user,
       text: 'Bye!',
       thread: thread
     });
@@ -37,6 +50,8 @@ describe('MessagesService', () => {
 
     messagesService.addMessage(m1);
     messagesService.addMessage(m2);
+    messagesService.addMessage(m3);
+    messagesService.addMessage(m4);
 
     // => messages: 1
     // => newMessages: Hi!
