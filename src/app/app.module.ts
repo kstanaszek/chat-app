@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { userServiceInjectables } from './user/users.service';
+import { threadsServiceInjectables } from './thread/threads.service';
 
 
 @NgModule({
@@ -13,7 +14,7 @@ import { userServiceInjectables } from './user/users.service';
   imports: [
     BrowserModule
   ],
-  providers: [userServiceInjectables],
+  providers: [userServiceInjectables, threadsServiceInjectables],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
