@@ -8,13 +8,12 @@ import { userServiceInjectables } from './user/users.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    userServiceInjectables
+    AppComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [userServiceInjectables],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
