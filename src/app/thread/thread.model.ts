@@ -10,8 +10,8 @@ export class Thread {
     constructor(id?: string,
         name?: string,
         avatarSrc?: string) {
-            this.id = id || uuid();
-            this.name = name;
-            this.avatarSrc = avatarSrc;
-         }
+        this.id = id || uuid();
+        this.name = name;
+        this.avatarSrc = avatarSrc;
+    }
 }

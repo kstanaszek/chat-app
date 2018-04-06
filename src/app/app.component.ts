@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MessagesService } from './message/message.service';
 import { ThreadsService } from './thread/threads.service';
 import { UsersService } from './user/users.service';
+import { ChatExampleData } from './data/chat-example-data';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
     public threadsService: ThreadsService,
     public usersService: UsersService) {
 
-      //ChatExampleData.init(messageService, threadsService, usersService);
+    ChatExampleData.init(messageService, threadsService, usersService);
   }
+  
 }
