@@ -1,32 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
+import { UsersService } from './user/users.service';
+import { ThreadsService } from './thread/threads.service';
 
 import { AppComponent } from './app.component';
-import { userServiceInjectables } from './user/users.service';
-import { threadsServiceInjectables } from './thread/threads.service';
-import { ChatThreadsComponent } from './chat-threads/chat-threads.component';
-import { ChatThreadComponent } from './chat-thread/chat-thread.component';
-import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
+import { ChatThreadComponent } from './chat-thread/chat-thread.component';
 import { ChatNavBarComponent } from './chat-nav-bar/chat-nav-bar.component';
+import { ChatThreadsComponent } from './chat-threads/chat-threads.component';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ChatPageComponent } from './chat-page/chat-page.component';
-
+import { FromNowPipe } from './pipes/from-now.pipe';
+import { MessagesService } from './message/message.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatThreadsComponent,
-    ChatThreadComponent,
-    ChatWindowComponent,
     ChatMessageComponent,
+    ChatThreadComponent,
     ChatNavBarComponent,
-    ChatPageComponent
+    ChatThreadsComponent,
+    ChatWindowComponent,
+    ChatPageComponent,
+    FromNowPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule
   ],
-  providers: [userServiceInjectables, threadsServiceInjectables],
+  providers: [
+    MessagesService, ThreadsService, UsersService
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
